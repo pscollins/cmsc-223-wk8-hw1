@@ -1,0 +1,277 @@
+\documentclass{article}
+\usepackage{fancyvrb}
+\usepackage{color}
+\usepackage[utf8]{inputenc}
+
+\renewcommand{\theFancyVerbLine}{\textcolor{red}{\small\arabic{FancyVerbLine}}}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{textpos}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage[english]{babel}
+\usepackage{centernot}
+
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.13,0.55,0.13}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.41,0.55}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.71,0.32,0.80}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.71,0.32,0.80}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.55,0.00,0.55}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.41,0.55}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.71,0.32,0.80}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.12,0.53,0.61}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.67,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.80,0.33,0.33}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@ul=\underline\def\PY@tc##1{\textcolor[rgb]{0.00,0.55,0.27}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.41,0.55}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.55,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.55,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.55,0.27}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.44,0.48,0.49}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.55,0.27}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.55,0.27}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.80,0.33,0.33}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.11,0.49,0.44}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.41,0.55}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.55,0.00,0.55}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.41,0.55}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.80,0.33,0.33}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.33,0.33,0.33}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.55,0.00,0.55}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.80,0.42,0.13}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.55,0.00}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.13,0.55,0.13}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.55,0.00,0.55}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.13,0.55,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.71,0.32,0.80}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.65,0.09,0.09}{##1}}\def\PY@bc##1{\setlength{\fboxsep}{0pt}\colorbox[rgb]{0.89,0.82,0.82}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.55,0.00,0.55}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.80,0.33,0.33}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.11,0.49,0.44}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.71,0.32,0.80}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.71,0.32,0.80}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.55,0.00,0.55}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.55,0.00,0.55}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.80,0.33,0.33}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.55,0.00,0.55}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.65,0.65,0.65}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.80,0.33,0.33}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.80,0.33,0.33}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.55,0.00,0.55}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.80,0.33,0.33}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.80,0.33,0.33}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+\begin{document}
+% Do not modify
+\begin{textblock*}{3cm}(-1.7cm,-2.6cm)
+  \noindent {\scriptsize Staple here!}
+\end{textblock*}
+
+% Do not modify
+\begin{textblock*}{4cm}(-1.7cm,-2.3cm)
+  \noindent {\scriptsize CMSC 22311 Spring 2015}
+\end{textblock*}
+
+% Do not modify other than putting your name where stated
+\begin{textblock*}{8cm}(12.5cm,-1cm)
+  \noindent {Name: Patrick Collins}
+\end{textblock*}
+% Do not modify other than putting your section (1 or 2) where stated
+\begin{textblock*}{3cm}(12.5cm,-0.5cm)
+  \noindent {Section: 1}
+\end{textblock*}
+% Do not modify other than typing your acknowledgement where stated
+\begin{textblock*}{13.5cm}(-1.7cm,-1.8cm)
+  \noindent \textit{I worked on this assignment with Kira Ghandhi.}
+\end{textblock*}
+
+\vspace{1cm}
+
+% Do not modify other than typing the homework number after #
+\begin{center}
+  \textbf{\Large Homework \# 10}
+\end{center}
+
+\section*{}
+%WORK_HERE
+\begin{Verbatim}[commandchars=\\\{\},numbers=left,firstnumber=1,stepnumber=1]
+\PY{c+c1}{\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{} Globber.hs \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}}
+\PY{k+kr}{module} \PY{n+nn}{Globber} \PY{k+kr}{where}
+
+\PY{k+kr}{import} \PY{n+nn}{Data.List} \PY{p}{(}\PY{n+nf}{tails}\PY{p}{)}
+
+\PY{k+kr}{data} \PY{k+kt}{GlobChar}
+  \PY{o+ow}{=} \PY{k+kt}{Literal} \PY{k+kt}{Char}
+  \PY{o}{|} \PY{k+kt}{AnyOne}
+  \PY{o}{|} \PY{k+kt}{AnyMany} \PY{k+kr}{deriving} \PY{p}{(}\PY{k+kt}{Eq}\PY{p}{,} \PY{k+kt}{Show}\PY{p}{)}
+
+\PY{k+kr}{type} \PY{k+kt}{GlobPattern} \PY{o+ow}{=} \PY{k+kt}{String}
+\PY{k+kr}{type} \PY{k+kt}{ParsedPattern} \PY{o+ow}{=} \PY{p}{[}\PY{k+kt}{GlobChar}\PY{p}{]}
+
+
+\PY{n+nf}{parsePattern} \PY{o+ow}{::} \PY{k+kt}{GlobPattern} \PY{o+ow}{\PYZhy{}\PYZgt{}} \PY{k+kt}{ParsedPattern}
+\PY{n+nf}{parsePattern} \PY{k+kt}{[]} \PY{o+ow}{=} \PY{k+kt}{[]}
+\PY{n+nf}{parsePattern} \PY{p}{(}\PY{n}{x}\PY{k+kt}{:}\PY{n}{xs}\PY{p}{)} \PY{o+ow}{=} \PY{n}{parse} \PY{n}{x} \PY{n}{xs}
+  \PY{k+kr}{where} \PY{n}{parse} \PY{l+s+sc}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}}\PY{l+s+se}{\PYZbs{}}\PY{l+s+sc}{\PYZsq{}} \PY{p}{(}\PY{n}{y}\PY{k+kt}{:}\PY{n}{ys}\PY{p}{)} \PY{o+ow}{=} \PY{p}{(}\PY{k+kt}{Literal} \PY{n}{y}\PY{p}{)}\PY{k+kt}{:}\PY{p}{(}\PY{n}{parsePattern} \PY{n}{ys}\PY{p}{)}
+        \PY{n}{parse} \PY{l+s+sc}{\PYZsq{}?\PYZsq{}} \PY{k+kr}{\PYZus{}} \PY{o+ow}{=} \PY{k+kt}{AnyOne}\PY{k+kt}{:}\PY{n}{parseRest}
+        \PY{n}{parse} \PY{l+s+sc}{\PYZsq{}*\PYZsq{}} \PY{k+kr}{\PYZus{}} \PY{o+ow}{=} \PY{k+kt}{AnyMany}\PY{k+kt}{:}\PY{n}{parseRest}
+        \PY{n}{parse} \PY{n}{c} \PY{k+kr}{\PYZus{}} \PY{o+ow}{=} \PY{p}{(}\PY{k+kt}{Literal} \PY{n}{c}\PY{p}{)}\PY{k+kt}{:}\PY{n}{parseRest}
+        \PY{n}{parseRest} \PY{o+ow}{=} \PY{n}{parsePattern} \PY{n}{xs}
+
+\PY{n+nf}{matchParsed} \PY{o+ow}{::} \PY{k+kt}{ParsedPattern} \PY{o+ow}{\PYZhy{}\PYZgt{}} \PY{k+kt}{String} \PY{o+ow}{\PYZhy{}\PYZgt{}} \PY{k+kt}{Bool}
+\PY{n+nf}{matchParsed} \PY{k+kt}{[]} \PY{k+kt}{[]} \PY{o+ow}{=} \PY{k+kt}{True}
+\PY{n+nf}{matchParsed} \PY{k+kt}{[]} \PY{k+kr}{\PYZus{}} \PY{o+ow}{=} \PY{k+kt}{False}
+\PY{n+nf}{matchParsed} \PY{p}{(}\PY{n}{g}\PY{k+kt}{:}\PY{n}{gs}\PY{p}{)} \PY{n}{cs\PYZsq{}}\PY{o}{@}\PY{p}{(}\PY{n}{c}\PY{k+kt}{:}\PY{n}{cs}\PY{p}{)} \PY{o+ow}{=} \PY{n}{match} \PY{n}{g}
+  \PY{k+kr}{where} \PY{n}{match} \PY{k+kt}{AnyOne} \PY{o+ow}{=} \PY{n}{matchRest}
+        \PY{n}{match} \PY{p}{(}\PY{k+kt}{Literal} \PY{n}{l}\PY{p}{)} \PY{o+ow}{=} \PY{n}{l} \PY{o}{==} \PY{n}{c} \PY{o}{\PYZam{}\PYZam{}} \PY{n}{matchRest}
+        \PY{n}{match} \PY{k+kt}{AnyMany} \PY{o+ow}{=} \PY{n}{any} \PY{p}{(}\PY{n}{matchParsed} \PY{n}{gs}\PY{p}{)} \PY{o}{\PYZdl{}} \PY{n}{tails} \PY{n}{cs\PYZsq{}}
+        \PY{n}{matchRest} \PY{o+ow}{=} \PY{n}{matchParsed} \PY{n}{gs} \PY{n}{cs}
+\PY{n+nf}{matchParsed} \PY{n}{gs} \PY{k+kt}{[]} \PY{o+ow}{=} \PY{n}{all} \PY{p}{(}\PY{o}{==} \PY{k+kt}{AnyMany}\PY{p}{)} \PY{n}{gs}
+
+\PY{n+nf}{matchGlob} \PY{o+ow}{::} \PY{k+kt}{GlobPattern} \PY{o+ow}{\PYZhy{}\PYZgt{}} \PY{k+kt}{String} \PY{o+ow}{\PYZhy{}\PYZgt{}} \PY{k+kt}{Bool}
+\PY{n+nf}{matchGlob} \PY{o+ow}{=} \PY{n}{matchParsed} \PY{o}{.} \PY{n}{parsePattern}
+
+
+\PY{c+c1}{\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{} TestGlobber.hs \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}}
+\PY{k+kr}{module} \PY{n+nn}{Main} \PY{p}{(}\PY{n+nf}{main}\PY{p}{)} \PY{k+kr}{where}
+
+\PY{k+kr}{import} \PY{n+nn}{Test.Hspec}
+\PY{k+kr}{import} \PY{n+nn}{Data.List} \PY{p}{(}\PY{n+nf}{tails}\PY{p}{)}
+\PY{k+kr}{import} \PY{n+nn}{Globber}
+
+\PY{n+nf}{main} \PY{o+ow}{::} \PY{k+kt}{IO} \PY{n+nb}{()}
+\PY{n+nf}{main} \PY{o+ow}{=} \PY{n}{hspec} \PY{o}{\PYZdl{}} \PY{n}{describe} \PY{l+s}{\PYZdq{}}\PY{l+s}{Testing Globber}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZdl{}} \PY{k+kr}{do}
+         \PY{n}{describe} \PY{l+s}{\PYZdq{}}\PY{l+s}{parser}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZdl{}} \PY{k+kr}{do}
+           \PY{n}{it} \PY{l+s}{\PYZdq{}}\PY{l+s}{preserves literals}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZdl{}} \PY{k+kr}{do}
+             \PY{n}{parsePattern} \PY{l+s}{\PYZdq{}}\PY{l+s}{abce}\PY{l+s}{\PYZdq{}} \PY{p}{`}\PY{n}{shouldBe}\PY{p}{`} \PY{n}{map} \PY{k+kt}{Literal} \PY{l+s}{\PYZdq{}}\PY{l+s}{abce}\PY{l+s}{\PYZdq{}}
+           \PY{n}{it} \PY{l+s}{\PYZdq{}}\PY{l+s}{recognizes special characters}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZdl{}} \PY{k+kr}{do}
+             \PY{n}{parsePattern} \PY{l+s}{\PYZdq{}}\PY{l+s}{*?}\PY{l+s}{\PYZdq{}} \PY{p}{`}\PY{n}{shouldBe}\PY{p}{`} \PY{p}{[}\PY{k+kt}{AnyMany}\PY{p}{,} \PY{k+kt}{AnyOne}\PY{p}{]}
+           \PY{n}{it} \PY{l+s}{\PYZdq{}}\PY{l+s}{escapes special chacters}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZdl{}} \PY{k+kr}{do}
+             \PY{n}{parsePattern} \PY{l+s}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}}\PY{l+s+se}{\PYZbs{}}\PY{l+s}{*}\PY{l+s+se}{\PYZbs{}}\PY{l+s+se}{\PYZbs{}}\PY{l+s}{?*?ab}\PY{l+s}{\PYZdq{}} \PY{p}{`}\PY{n}{shouldBe}\PY{p}{`} \PY{p}{[}\PY{k+kt}{Literal} \PY{l+s+sc}{\PYZsq{}*\PYZsq{}}\PY{p}{,}
+                                                   \PY{k+kt}{Literal} \PY{l+s+sc}{\PYZsq{}?\PYZsq{}}\PY{p}{,}
+                                                   \PY{k+kt}{AnyMany}\PY{p}{,}
+                                                   \PY{k+kt}{AnyOne}\PY{p}{,}
+                                                   \PY{k+kt}{Literal} \PY{l+s+sc}{\PYZsq{}a\PYZsq{}}\PY{p}{,}
+                                                   \PY{k+kt}{Literal} \PY{l+s+sc}{\PYZsq{}b\PYZsq{}}\PY{p}{]}
+           \PY{n}{it} \PY{l+s}{\PYZdq{}}\PY{l+s}{escapes backslashes}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZdl{}} \PY{k+kr}{do}
+             \PY{n}{parsePattern} \PY{l+s}{\PYZdq{}}\PY{l+s+se}{\PYZbs{}}\PY{l+s+se}{\PYZbs{}}\PY{l+s+se}{\PYZbs{}}\PY{l+s+se}{\PYZbs{}}\PY{l+s}{\PYZdq{}} \PY{p}{`}\PY{n}{shouldBe}\PY{p}{`} \PY{p}{[}\PY{k+kt}{Literal} \PY{l+s+sc}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}}\PY{l+s+se}{\PYZbs{}}\PY{l+s+sc}{\PYZsq{}}\PY{p}{]}
+
+         \PY{n}{describe} \PY{l+s}{\PYZdq{}}\PY{l+s}{empty pattern}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZdl{}} \PY{k+kr}{do}
+           \PY{n}{it} \PY{l+s}{\PYZdq{}}\PY{l+s}{matches empty string}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZdl{}}
+             \PY{n}{matchGlob} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdq{}} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdq{}}
+           \PY{n}{it} \PY{l+s}{\PYZdq{}}\PY{l+s}{shouldn\PYZsq{}t match non\PYZhy{}empty string}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZdl{}} \PY{k+kr}{do}
+             \PY{n}{not} \PY{o}{\PYZdl{}} \PY{n}{matchGlob} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdq{}} \PY{l+s}{\PYZdq{}}\PY{l+s}{string}\PY{l+s}{\PYZdq{}}
+         \PY{n}{describe} \PY{l+s}{\PYZdq{}}\PY{l+s}{question mark}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZdl{}} \PY{k+kr}{do}
+           \PY{n}{it} \PY{l+s}{\PYZdq{}}\PY{l+s}{matches any character}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZdl{}}
+             \PY{n}{all} \PY{p}{(}\PY{n}{matchGlob} \PY{l+s}{\PYZdq{}}\PY{l+s}{?}\PY{l+s}{\PYZdq{}}\PY{p}{)} \PY{o}{\PYZdl{}} \PY{n}{map} \PY{p}{(}\PY{k+kt}{:}\PY{k+kt}{[]}\PY{p}{)} \PY{p}{[}\PY{l+s+sc}{\PYZsq{}A\PYZsq{}}\PY{o}{..}\PY{l+s+sc}{\PYZsq{}z\PYZsq{}}\PY{p}{]}
+           \PY{n}{it} \PY{l+s}{\PYZdq{}}\PY{l+s}{does not match empty string}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZdl{}} \PY{k+kr}{do}
+             \PY{n}{not} \PY{o}{\PYZdl{}} \PY{n}{matchGlob} \PY{l+s}{\PYZdq{}}\PY{l+s}{?}\PY{l+s}{\PYZdq{}} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdq{}}
+         \PY{n}{describe} \PY{l+s}{\PYZdq{}}\PY{l+s}{star}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZdl{}} \PY{k+kr}{do}
+           \PY{n}{it} \PY{l+s}{\PYZdq{}}\PY{l+s}{matches the empty string}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZdl{}}
+             \PY{n}{matchGlob} \PY{l+s}{\PYZdq{}}\PY{l+s}{*}\PY{l+s}{\PYZdq{}} \PY{l+s}{\PYZdq{}}\PY{l+s}{\PYZdq{}}
+           \PY{n}{it} \PY{l+s}{\PYZdq{}}\PY{l+s}{matches any string}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZdl{}}
+             \PY{n}{all} \PY{p}{(}\PY{n}{matchGlob} \PY{l+s}{\PYZdq{}}\PY{l+s}{*}\PY{l+s}{\PYZdq{}}\PY{p}{)} \PY{o}{\PYZdl{}} \PY{n}{tails} \PY{p}{[}\PY{l+s+sc}{\PYZsq{}A\PYZsq{}}\PY{o}{..}\PY{l+s+sc}{\PYZsq{}z\PYZsq{}}\PY{p}{]}
+           \PY{n}{it} \PY{l+s}{\PYZdq{}}\PY{l+s}{can be repeated indefinitely}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZdl{}}
+             \PY{n}{all} \PY{p}{(}\PY{n}{matchGlob} \PY{o}{\PYZdl{}} \PY{n}{replicate} \PY{l+m+mi}{30} \PY{l+s+sc}{\PYZsq{}*\PYZsq{}}\PY{p}{)} \PY{o}{\PYZdl{}} \PY{n}{tails} \PY{p}{[}\PY{l+s+sc}{\PYZsq{}A\PYZsq{}}\PY{o}{..}\PY{l+s+sc}{\PYZsq{}z\PYZsq{}}\PY{p}{]}
+         \PY{n}{describe} \PY{l+s}{\PYZdq{}}\PY{l+s}{mixtures}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZdl{}} \PY{k+kr}{do}
+             \PY{n}{it} \PY{l+s}{\PYZdq{}}\PY{l+s}{can intersperse ? and literals}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZdl{}} \PY{k+kr}{do}
+               \PY{n}{matchGlob} \PY{l+s}{\PYZdq{}}\PY{l+s}{?b?b?b}\PY{l+s}{\PYZdq{}} \PY{l+s}{\PYZdq{}}\PY{l+s}{ababab}\PY{l+s}{\PYZdq{}}
+             \PY{n}{it} \PY{l+s}{\PYZdq{}}\PY{l+s}{rejects bad matches with ? and literals}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZdl{}} \PY{k+kr}{do}
+               \PY{n}{not} \PY{o}{\PYZdl{}} \PY{n}{matchGlob} \PY{l+s}{\PYZdq{}}\PY{l+s}{?b?b?b}\PY{l+s}{\PYZdq{}} \PY{l+s}{\PYZdq{}}\PY{l+s}{bababa}\PY{l+s}{\PYZdq{}}
+             \PY{n}{it} \PY{l+s}{\PYZdq{}}\PY{l+s}{can intersperse * and ?}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZdl{}} \PY{k+kr}{do}
+               \PY{n}{all} \PY{p}{(}\PY{n}{matchGlob} \PY{l+s}{\PYZdq{}}\PY{l+s}{*???*}\PY{l+s}{\PYZdq{}}\PY{p}{)} \PY{p}{[}\PY{l+s}{\PYZdq{}}\PY{l+s}{aaa}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{aaaaaa}\PY{l+s}{\PYZdq{}}\PY{p}{,} \PY{l+s}{\PYZdq{}}\PY{l+s}{aaaaaaaa}\PY{l+s}{\PYZdq{}}\PY{p}{]}
+             \PY{n}{it} \PY{l+s}{\PYZdq{}}\PY{l+s}{rejects bad patterns with * and ?}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZdl{}} \PY{k+kr}{do}
+               \PY{n}{all} \PY{p}{(}\PY{n}{not} \PY{o}{.} \PY{n}{matchGlob} \PY{l+s}{\PYZdq{}}\PY{l+s}{*?????*}\PY{l+s}{\PYZdq{}}\PY{p}{)} \PY{o}{\PYZdl{}} \PY{n}{tails} \PY{l+s}{\PYZdq{}}\PY{l+s}{aaaa}\PY{l+s}{\PYZdq{}}
+             \PY{n}{it} \PY{l+s}{\PYZdq{}}\PY{l+s}{can intersperse * and literals}\PY{l+s}{\PYZdq{}} \PY{o}{\PYZdl{}} \PY{k+kr}{do}
+               \PY{n}{matchGlob} \PY{l+s}{\PYZdq{}}\PY{l+s}{*a*b*c*d*e}\PY{l+s}{\PYZdq{}} \PY{l+s}{\PYZdq{}}\PY{l+s}{aebdcbdae}\PY{l+s}{\PYZdq{}}
+
+\PY{c+c1}{\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{} Output \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}}
+\PY{c+cm}{\PYZob{}\PYZhy{}}\PY{c+cm}{ From a clean build:}
+\PY{c+cm}{\PYZdl{}  cmsc}\PY{c+cm}{\PYZhy{}}\PY{c+cm}{223}\PY{c+cm}{\PYZhy{}}\PY{c+cm}{wk8}\PY{c+cm}{\PYZhy{}}\PY{c+cm}{hw1  cabal configure }\PY{c+cm}{\PYZhy{}}\PY{c+cm}{\PYZhy{}}\PY{c+cm}{enable}\PY{c+cm}{\PYZhy{}}\PY{c+cm}{tests}
+\PY{c+cm}{Resolving dependencies...}
+\PY{c+cm}{Configuring globber}\PY{c+cm}{\PYZhy{}}\PY{c+cm}{1.0.0...}
+\PY{c+cm}{cabal: At least the following dependencies are missing:}
+\PY{c+cm}{hspec }\PY{c+cm}{\PYZhy{}}\PY{c+cm}{any}
+\PY{c+cm}{\PYZdl{}  cmsc}\PY{c+cm}{\PYZhy{}}\PY{c+cm}{223}\PY{c+cm}{\PYZhy{}}\PY{c+cm}{wk8}\PY{c+cm}{\PYZhy{}}\PY{c+cm}{hw1  cabal install}
+\PY{c+cm}{Resolving dependencies...}
+\PY{c+cm}{Notice: installing into a sandbox located at}
+\PY{c+cm}{/home/patrick/hacking/courses/cmsc223/cmsc}\PY{c+cm}{\PYZhy{}}\PY{c+cm}{223}\PY{c+cm}{\PYZhy{}}\PY{c+cm}{wk8}\PY{c+cm}{\PYZhy{}}\PY{c+cm}{hw1/.cabal}\PY{c+cm}{\PYZhy{}}\PY{c+cm}{sandbox}
+\PY{c+cm}{Configuring globber}\PY{c+cm}{\PYZhy{}}\PY{c+cm}{1.0.0...}
+\PY{c+cm}{Building globber}\PY{c+cm}{\PYZhy{}}\PY{c+cm}{1.0.0...}
+\PY{c+cm}{...}
+\PY{c+cm}{Installed globber}\PY{c+cm}{\PYZhy{}}\PY{c+cm}{1.0.0}
+\PY{c+cm}{\PYZdl{}  cmsc}\PY{c+cm}{\PYZhy{}}\PY{c+cm}{223}\PY{c+cm}{\PYZhy{}}\PY{c+cm}{wk8}\PY{c+cm}{\PYZhy{}}\PY{c+cm}{hw1  dist/build/test}\PY{c+cm}{\PYZhy{}}\PY{c+cm}{globber/test}\PY{c+cm}{\PYZhy{}}\PY{c+cm}{globber}
+
+\PY{c+cm}{Testing Globber}
+\PY{c+cm}{  parser}
+\PY{c+cm}{    preserves literals}
+\PY{c+cm}{    recognizes special characters}
+\PY{c+cm}{    escapes special chacters}
+\PY{c+cm}{    escapes backslashes}
+\PY{c+cm}{  empty pattern}
+\PY{c+cm}{    matches empty string}
+\PY{c+cm}{    shouldn\PYZsq{}t match non}\PY{c+cm}{\PYZhy{}}\PY{c+cm}{empty string}
+\PY{c+cm}{  question mark}
+\PY{c+cm}{    matches any character}
+\PY{c+cm}{    does not match empty string}
+\PY{c+cm}{  star}
+\PY{c+cm}{    matches the empty string}
+\PY{c+cm}{    matches any string}
+\PY{c+cm}{    can be repeated indefinitely}
+\PY{c+cm}{  mixtures}
+\PY{c+cm}{    can intersperse ? and literals}
+\PY{c+cm}{    rejects bad matches with ? and literals}
+\PY{c+cm}{    can intersperse * and ?}
+\PY{c+cm}{    rejects bad patterns with * and ?}
+\PY{c+cm}{    can intersperse * and literals}
+
+\PY{c+cm}{Finished in 0.0105 seconds}
+\PY{c+cm}{16 examples, 0 failures}
+\PY{c+cm}{\PYZhy{}\PYZcb{}}
+\end{Verbatim}
+
+
+\end{document}
